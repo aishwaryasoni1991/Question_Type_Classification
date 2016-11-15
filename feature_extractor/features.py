@@ -19,20 +19,19 @@ import config
 
 # create a dict of all the related words
 
+
 def build_word_lists():
     #build word lists from related words data 
-    print 5
     word_lists = {}
     a = 'data/rel_words'
-    listing = listdir(a)
+    listing = listdir(a) #listdir returns all the files within the directory
     #print listing
     for wlf in listing:
         #print "current file isl: " + wlf
         f=open(path.join(a,wlf),'r')
         #with open(path.join(a,wlf),'r') as f:
-        print 'in open'
         word_lists[wlf] = [word.strip().lower() for word in f.readlines()]
-    #print word_lists
+    print word_lists
     return word_lists
 
 class TagVectorizer(TfidfVectorizer):
@@ -97,11 +96,9 @@ class NERVectorizer(TfidfVectorizer):
         
         self.tags_only=tags_only
         self.tagger = StanfordNERTagger(config.NER_MODEL_PATH, config.NER_JAR, encoding=self.encoding)
-        print "in NER ",tags_only
-        print self.tags_only
+        print "in NER ",self.tags_only
         #self.tagger = ner.SocketNER(host='localhost', port='9191', output_format='slashTags')
-        print "heelok asoks ",self.tagger
-
+       
     def build_analyzer(self):
         """Return a callable that handles preprocessing and tokenization"""
         preprocess = self.build_preprocessor()
@@ -119,7 +116,7 @@ class NERVectorizer(TfidfVectorizer):
         #    get_tags = lambda doc: list(chain.from_iterable(self.tagger.get_entities(doc)))
         
         
-
+       
         if self.tags_only:
             
             get_tags = lambda doc: [t[1] for t in self.tagger.tag(tokenize(doc))]
@@ -128,7 +125,7 @@ class NERVectorizer(TfidfVectorizer):
         else:
            
             get_tags = lambda doc: list(chain.from_iterable(self.tagger.tag(tokenize(doc))))
-            print "self tags false ",get_tags
+            print "self tags false ",get_tags("What is the most local place in paris ?")
         
         #print lambda doc: self._word_ngrams(get_tags(doc))
         return lambda doc: self._word_ngrams(get_tags(doc))
@@ -155,7 +152,7 @@ class RelatedWordVectorizer(TfidfVectorizer):
         print "in wordvect"
         print
         print self.preprocessor
-        self.word_lists = build_word_lists()
+        self.word_lists = build_word_lists()  #control goes to build_word_lists()
 
     
     def build_analyzer(self):

@@ -18,15 +18,3 @@ DESC:desc What did the only repealed amendment to the U.S. Constitution deal wit
 NUM:count How many Jews were executed in concentration camps during WWII ?
 DESC:def What is '' Nine Inch Nails '' ?
 DESC:def What is an annotated bibliography ?
-NUM:date What is the date of Boxing Day ?
-ENTY:other What articles of clothing are tokens in Monopoly ?
-HUM:ind Name 11 famous martyrs .
-DESC:desc What 's the Olympic motto ?
-DESC:desc What is the origin of the name ' Scarlett ' ?
-ENTY:letter What 's the second-most-used vowel in English ?
-HUM:ind Who was the inventor of silly putty ?
-LOC:other What is the highest waterfall in the United States ?
-ENTY:other Name a golf course in Myrtle Beach .
-LOC:state Which two states enclose Chesapeake Bay ?
-ABBR:exp What does the abbreviation AIDS stand for ?
-ENTY:other What does a spermologer collect ?

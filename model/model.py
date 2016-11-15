@@ -17,7 +17,9 @@ from sklearn.svm import LinearSVC
 from sklearn.externals import joblib
 import feature_extractor
 from sklearn.tree import DecisionTreeClassifier
-
+from datetime import datetime
+import configuration
+import temp
 
 class Classifier:
 
@@ -48,7 +50,7 @@ class Classifier:
                 
                 ('pos', feature_extractor.features.TagVectorizer(max_df=0.75, ngram_range=(1, 4),
                                        sublinear_tf=True)),
-                 ('ner', feature_extractor.features.NERVectorizer(ngram_range=(1, 4),
+                 ('ner', feature_extractor.features.NERVectorizer(min_df= 0.5,ngram_range=(1, 4),
                                        sublinear_tf=True)),
             ])),
             
@@ -70,15 +72,27 @@ class Classifier:
       #  print 'in train'
         self.model.fit(self.data.data, self.data.target)
 
+    
+    
+    def save_model(self,filename):
+        if filename=="":
+            log.ERROR("Empty file name")
+        print "in saving model " ,filename
+        log.debug("Saving model to file: " + filename)      
+        joblib.dump(self.model,path.join(configuration.MODEL_DIR,filename))
+        
+    def load_model(self,pklfile):
+        if pklfile=="":
+            log.ERROR("Empty file name")
+        log.debug("Loading model from file: " + pklfile)
+        self.model = joblib.load(pklfile)
+        return self
+    
     def predict(self, doc):
         """
         Predict the classification of a document with the trained model
         Returns the coarse and fine classes
         """
-        
-        #print 'doc is ',doc
-        #print 
-        #print "using split ",[doc][0].split(':')
         qtype = self.model.predict([doc])
         print "prediction is ",qtype
       
@@ -86,12 +100,13 @@ class Classifier:
         
         #change the n_folds value =10
 
-    def test_model(self, n_folds=1, leave_one_out=False):
+    def test_model(self,n_folds=1,leave_one_out=False): #n_folds=1
         """
         Test the model by cross-validating with Stratified k-folds
 
         """
         log.debug("Testing model ({} folds)".format(n_folds))
+        
         X = self.data.data # list of questions
         #print 'X is ', X
         
@@ -103,11 +118,15 @@ class Classifier:
         if leave_one_out:
             #print 'leave_one_out=True'
             cv = LeaveOneOut(len(y))
+            print "cv is true",cv
             #print 'length of y is',len(y)
             #print 'cv.n is ',cv.n
         else:
             #print 'leave_one_out=False'
-            cv = StratifiedKFold(y, n_folds=n_folds)
+            cv = StratifiedKFold(y) 
+            #print "cv is false ",cv
+            """Stratification will ensure that the percentages of each class in your entire data 
+            will be the same (or very close to) within each individual fold."""
             #print 'cv.y is ',cv.y
 
     # in every iteration, one label will be left out, starting from 0 location
@@ -132,13 +151,12 @@ class Classifier:
 
     
 
-
-
 def load_data(filenames, coarse=False):
 
     data = [] # data stores the actual question
     target = [] # target stores the coarse labels like HUM or NUM etc
     fine_target = [] # fine_target stores the fine labels like manners,food etc
+    print "coarse is ",coarse
     if coarse:
         data_re = re.compile(r'(\w+):(\w+) (.+)')
         print 'line is '
@@ -177,8 +195,12 @@ def load_data(filenames, coarse=False):
     )
 
 
-if __name__ == "__main__":
 
+""" Model trained and pickled on coarse =False will predict only for coarse=Flase and not coarse = true and vicevera"""
+    
+if __name__ == "__main__":
+    print datetime.now().time()
+    
     data = load_data("./data/aa.txt",coarse=False)
     test_data=load_data("./data/tt.txt")
     print data # prints the Bunch() output
@@ -193,8 +215,15 @@ if __name__ == "__main__":
     clf.test_model(n_folds=2) #change value to 2
     # Plot Precision-Recall curve
     
+    clf.save_model("train.pkl")
     
-
-    #        # clf.test_model(leave_one_out=True)
-    clf.predict("What is the most local place in paris ?")  
+    #clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
+    print
+    print
+    #clf.
+    #clf=joblib.load(path.join(configuration.MODEL_DIR,"train.pkl"))
+    print clf
+    #clf.test_model(leave_one_out=True)
+    clf.predict("What is the most local place in paris ?") 
+    print datetime.now().time()
          
