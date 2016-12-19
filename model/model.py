@@ -240,17 +240,14 @@ def load_data(filenames, coarse=False):
     )
 
 
-
 """ Model trained and pickled on coarse =False will predict only for coarse=Flase and not coarse = true and vicevera"""
     
 if __name__ == "__main__":
-    print datetime.now().time()
-    
+   
     #data = load_data("./data/train.txt",coarse=False)
+   
     #test_data=load_data("./data/faq.txt")
     #print data # prints the Bunch() output
-
-    
     #clf = Classifier(data)
     #clf.search_estimator_params()
     #        # clf.test_model(n_folds=10)
