@@ -19,7 +19,13 @@ import feature_extractor
 from sklearn.tree import DecisionTreeClassifier
 from datetime import datetime
 import configuration
-import temp
+#from sklearn.metrics import accuracy_score
+from sklearn.model_selection import cross_val_score
+import pickle
+from sklearn.metrics import accuracy_score
+from sklearn import cross_validation
+#reload(sys)
+#sys.setdefaultencoding("utf-8")
 
 class Classifier:
 
@@ -94,12 +100,38 @@ class Classifier:
         Returns the coarse and fine classes
         """
         qtype = self.model.predict([doc])
-        print "prediction is ",qtype
-      
+        #print "prediction is ",qtype
+        return qtype
        # return qtype[0], qtype[1]
         
         #change the n_folds value =10
 
+   
+    def test_faq(self):
+        X= self.data.data # list of questions
+        #print 'X is ', X
+        
+        y = self.data.target # list of labels
+        #print 'Y is  ', y
+        X_train, X_test, Y_train, Y_test = cross_validation.train_test_split(X, y, test_size=0.33)
+        self.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
+        test_pred = []
+        for a in X_test:
+            print "a is "
+            print
+            print a
+            
+            test_pred=test_pred.append(self.predict(a))
+        result = self.model.score(test_pred, Y_test)
+        b= accuracy_score(Y_test,test_pred)
+        
+        print("Accuracy: %.3f%%") % (result*100.0)
+        print "b is ", b
+            
+        
+        return 0
+    
+    
     def test_model(self,n_folds=1,leave_one_out=False): #n_folds=1
         """
         Test the model by cross-validating with Stratified k-folds
@@ -146,11 +178,25 @@ class Classifier:
         else:
             avg_score /= n_folds
 
-        print("Average score: {}".format(avg_score))
+        #print("Average score: {}".format(avg_score))
+        scores = cross_val_score(model, X, y, cv=cv) # X=  all the questions, y is the target
+        print
+        print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         return avg_score
 
     
+def classify_question_type(text):
+    print "in the classify question function"
+    clf = Classifier()
+    clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
 
+    #print
+    qtype = clf.predict(text) 
+     
+    print qtype
+    return qtype
+    
+    
 def load_data(filenames, coarse=False):
 
     data = [] # data stores the actual question
@@ -168,9 +214,8 @@ def load_data(filenames, coarse=False):
         #print data_re
 
     for line in fileinput.input(filenames):
-        d = data_re.match(line)
-        
-        
+        #line=line.decode('utf-8','ignore').encode("utf-8")
+        d = data_re.match(line)        
         if not d:
             raise Exception("Invalid format in file {} at line {}"
                             .format(fileinput.filename(), fileinput.filelineno()))
@@ -201,29 +246,31 @@ def load_data(filenames, coarse=False):
 if __name__ == "__main__":
     print datetime.now().time()
     
-    data = load_data("./data/aa.txt",coarse=False)
-    test_data=load_data("./data/tt.txt")
-    print data # prints the Bunch() output
+    #data = load_data("./data/train.txt",coarse=False)
+    #test_data=load_data("./data/faq.txt")
+    #print data # prints the Bunch() output
 
     
-    clf = Classifier(data)
+    #clf = Classifier(data)
     #clf.search_estimator_params()
     #        # clf.test_model(n_folds=10)
     
     
-    clf.train_model()
-    clf.test_model(n_folds=2) #change value to 2
+    #clf.train_model()
+    #clf.test_faq()
+    #clf.test_model(n_folds=2) #change value to 2
     # Plot Precision-Recall curve
     
-    clf.save_model("train.pkl")
+    #clf.save_model("trainCoarse.pkl")
     
     #clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
     print
     print
     #clf.
     #clf=joblib.load(path.join(configuration.MODEL_DIR,"train.pkl"))
-    print clf
+    #print clf
+    classify_question_type(": Why are you requiring all this coursework? I am an experienced software engineer and shouldn't have to take these academic prerequisites.") 
     #clf.test_model(leave_one_out=True)
-    clf.predict("What is the most local place in paris ?") 
+    #clf.predict("How do the Nazis justify the killings of jews in the Holocaust?") 
     print datetime.now().time()
          

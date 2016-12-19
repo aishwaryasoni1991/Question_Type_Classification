@@ -1,0 +1,12 @@
+ENTY:cremat Should I apply to Computer Science or Software Engineering ?
+ENTY:cremat What films featured the character Popeye Doyle ?
+DESC:def What are the application deadlines ?
+DESC:manner Can you mail me the application materials ?
+DESC:def What are the application fees ?
+DESC:manner My application was rejected. Can I find out why ?
+DESC:desc My application was rejected, and I would like to reapply. What can I do to improve my chances ?
+ENTY:cremat I already wrote (a master's thesis|a best-selling novel|a letter to my mom). Do I still have to take Technical Writing at SJSU ?
+DESC:desc What happens if I get a D or F in a class ?
+ENTY:other I will be completing my undergraduate degree in the same semester in which I submit an application. Is that ok ?
+ENTY:cremat I concluded that I need to take quite a few courses to prepare myself for admission to the MSCS program. Can I be conditionally admitted and take the courses as an MSCS student ?
+DESC:reason Why are you requiring all this coursework? I am an experienced software engineer and shouldn't have to take these academic prerequisites ?

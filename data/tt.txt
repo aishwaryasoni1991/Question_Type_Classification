@@ -30,3 +30,4 @@ LOC:other Where is John Wayne airport ?
 LOC:other What hemisphere is the Philippines in ?
 NUM:speed What is the average speed of the horses at the Kentucky Derby ?
 LOC:mount Where are the Rocky Mountains ?
+ENTY:cremat What films featured the character Popeye Doyle ?

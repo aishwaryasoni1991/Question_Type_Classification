@@ -1,4 +1,6 @@
 DESC:manner How did serfdom develop in and then leave Russia ?
+LOC:other Where is the Loop ?
+DESC:def What does '' extended definition '' mean and how would one write a paper on it ?
 ENTY:cremat What films featured the character Popeye Doyle ?
 DESC:manner How can I find a list of celebrities ' real names ?
 ENTY:animal What fowl grabs the spotlight after the Chinese Year of the Monkey ?
@@ -18,3 +20,121 @@ DESC:desc What did the only repealed amendment to the U.S. Constitution deal wit
 NUM:count How many Jews were executed in concentration camps during WWII ?
 DESC:def What is '' Nine Inch Nails '' ?
 DESC:def What is an annotated bibliography ?
+NUM:date What is the date of Boxing Day ?
+ENTY:other What articles of clothing are tokens in Monopoly ?
+HUM:ind Name 11 famous martyrs .
+DESC:desc What 's the Olympic motto ?
+DESC:desc What is the origin of the name ' Scarlett ' ?
+ENTY:letter What 's the second-most-used vowel in English ?
+HUM:ind Who was the inventor of silly putty ?
+LOC:other What is the highest waterfall in the United States ?
+ENTY:other Name a golf course in Myrtle Beach .
+LOC:state Which two states enclose Chesapeake Bay ?
+ABBR:exp What does the abbreviation AIDS stand for ?
+ENTY:other What does a spermologer collect ?
+NUM:count How many points make up a perfect fivepin bowling score ?
+HUM:gr Which company that manufactures video-game hardware sells the '' super system '' ?
+NUM:count How many Community Chest cards are there in Monopoly ?
+DESC:desc What do Mormons believe ?
+NUM:date When did the neanderthal man live ?
+ENTY:religion In what religion was Isis the nature goddess ?
+LOC:other Where do the adventures of '' The Swiss Family Robinson '' take place ?
+ENTY:animal What relative of the racoon is sometimes known as the cat-bear ?
+DESC:manner How can I register my website in Yahoo for free ?
+ENTY:other What was cash-conscious Colonel Edwin L. Drake the first to drill ?
+NUM:count How many people in the world speak French ?
+NUM:count How many inches over six feet is the Venus de Milo ?
+DESC:manner How do they find or choose witnesses to an execution ?
+HUM:ind What 1920s cowboy star rode Tony the Wonder Horse ?
+ENTY:food What cocktail inspired John Doxat to write the book Stirred-Not Shaken ?
+HUM:gr What ISPs exist in the Caribbean ?
+DESC:manner How do you ask a total stranger out on a date ?
+ENTY:other What weapon is the mythological character Apollo most proficient with ?
+LOC:country What country do the Galapagos Islands belong to ?
+DESC:def What is ethology ?
+HUM:ind Who was the prophet of the Muslim people ?
+DESC:desc Where did the term '' 86ed '' come from ?
+HUM:ind Who is Snoopy 's arch-enemy ?
+DESC:def What is the nature of learning ?
+ENTY:color What 's the only color Johnny Cash wears on stage ?
+ENTY:termeq What 's the term for a young fox ?
+LOC:state What U.S. state lived under six flags ?
+DESC:def What is the Kashmir issue ?
+LOC:other Where is the Loop ?
+DESC:def What does '' extended definition '' mean and how would one write a paper on it ?
+LOC:country What country 's capital is Tirana ?
+DESC:def What is titanium ?
+HUM:ind Who do Herb and Tootsie live next door to ?
+DESC:def What is a caldera ?
+DESC:reason Why do people get calluses ?
+LOC:other What are the names of the tourist attractions in Reims ?
+DESC:reason What are Cushman and Wakefield known for ?
+LOC:other What body of water does the Danube River flow into ?
+HUM:ind Who is the founder of Scientology ?
+ENTY:other What does the six-footed Musca domestica become when it enters a house ?
+DESC:desc What is the history of skateboarding ?
+HUM:ind Who starred in Singing in the Rain and The Singing Nun ?
+DESC:manner How do I make fuel bricks from recycled newspaper ?
+HUM:ind What 19th-century painter died in the Marquesas Islands ?
+ENTY:body The corpus callosum is in what part of the body ?
+DESC:manner How do I log on to home page at Headquarters U.S. European Command ?
+ENTY:other What is Nebraska 's most valuable resource ?
+NUM:count How many species of the Great White shark are there ?
+DESC:desc What is the origin of head lice ?
+LOC:state What is the nickname for the state of Mississippi ?
+ENTY:animal What was the first domesticated bird ?
+NUM:count How many villi are found in the small intestine ?
+LOC:country What country did King Wenceslas rule ?
+ENTY:dismed What is a fear of shadows ?
+HUM:ind Who were the five Marx brothers ?
+NUM:date In which year was New Zealand excluded from the ANZUS alliance ?
+NUM:date When did CNN begin broadcasting ?
+DESC:reason What causes the body to shiver in cold temperatures ?
+DESC:def What are bear and bull markets ?
+ENTY:cremat What J.R.R. Tolkien book features Bilbo Baggins as the central character ?
+DESC:def What is '' dew point '' ?
+DESC:def What is the meaning of Jesus ?
+HUM:gr What company 's logo is a '' W '' in a circle ?
+DESC:def What is the definition of a cascade ?
+NUM:date When did Rococo painting and architecture flourish ?
+LOC:country What country 's national passenger rail system is called Via ?
+HUM:ind Who invented Make-up ?
+DESC:desc What is the origin of the word '' attic '' ?
+DESC:desc What did Delilah do to Samson 's hair ?
+ENTY:animal What kind of animals were in the Paleozoic era ?
+HUM:ind Which of the following was Rhodes Scholar ?
+HUM:ind Who comprised the now-defunct comic book team known as the Champions ?
+DESC:manner How do you make a paintball ?
+LOC:state What U.S. state is Fort Knox in ?
+ENTY:animal What is a female rabbit called ?
+LOC:mount Where is the highest point in Japan ?
+DESC:desc Where do chihuahuas come from ?
+LOC:other Where does Barney Rubble go to work after he drops Fred off in the '' Flintstones '' cartoon series ?
+LOC:other What are the world 's four oceans ?
+ENTY:cremat What 's the only work by Michelangelo that bears his signature ?
+ENTY:animal What is the largest snake in the world ?
+ENTY:cremat In what medium is Stuart Hamblen considered to be the first singing cowboy ?
+LOC:other Where on the Internet can I find a song lyrics database similar to the International Lyrics Server ?
+NUM:money How much money does a back injury lawsuit get ?
+ENTY:termeq What 's the common name for acetylsalicylic acid ?
+DESC:def What does the Georgetown '' Hoya '' mean ?
+LOC:other Where can I find a list of '' classic '' books 5th and 6th graders should read ?
+ENTY:product Which two products use a tiger as their symbol ?
+DESC:manner How is the election of a new Pope announced to the world ?
+NUM:period How long does it take for your blood to make one complete trip through the body ?
+DESC:manner How do chickens have baby chicks ?
+DESC:desc What is the historical relationship of Catholic Church and bingo ?
+DESC:manner How was the element calcium named ?
+HUM:ind What crooner joined The Andrews Sisters for Pistol Packin Mama ?
+HUM:gr What piano company claims its product is the '' Instrument of the immortals '' ?
+NUM:date When did the Bounty mutiny take place ?
+ENTY:cremat What novel inspired the movie BladeRunner ?
+DESC:def What is a transistor ?
+ENTY:cremat What is a film starring Jude Law ?
+ENTY:animal What Hollywood dog died in the arms of Jean Harlow in 1932 ?
+ENTY:substance What are the most common elements in the Earth 's crust ?
+NUM:money How much would it cost to purchase a 2-foot-square party tent , with sides , ?
+HUM:ind What actress has received the most Oscar nominations ?
+DESC:def What are equity securities ?
+DESC:def What is gymnophobia ?
+NUM:count How many years do fossils take to form ?

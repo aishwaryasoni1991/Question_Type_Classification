@@ -9,8 +9,10 @@ from nltk.tag import StanfordNERTagger
 from sklearn.base import BaseEstimator
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 import ner
-
-import config
+import sys
+import configuration as config
+#reload(sys)
+#sys.setdefaultencoding("utf-8")
 #from inquire import config
 
 
@@ -103,6 +105,7 @@ class NERVectorizer(TfidfVectorizer):
         """Return a callable that handles preprocessing and tokenization"""
         preprocess = self.build_preprocessor()
         tokenizer = self.build_tokenizer()
+       
         tokenize = lambda doc: tokenizer(preprocess(self.decode(doc)))
         
         print "in build analyzer of NER "
@@ -115,17 +118,17 @@ class NERVectorizer(TfidfVectorizer):
         #else:
         #    get_tags = lambda doc: list(chain.from_iterable(self.tagger.get_entities(doc)))
         
-        
+    
        
         if self.tags_only:
             
             get_tags = lambda doc: [t[1] for t in self.tagger.tag(tokenize(doc))]
-            print "self tags true ",get_tags("What is the most local place in paris ?")
+            #print "self tags true ",get_tags("What is the most local place in paris ?")
               
         else:
            
             get_tags = lambda doc: list(chain.from_iterable(self.tagger.tag(tokenize(doc))))
-            print "self tags false ",get_tags("What is the most local place in paris ?")
+            #print "self tags false ",get_tags("What is the most local place in paris ?")
         
         #print lambda doc: self._word_ngrams(get_tags(doc))
         return lambda doc: self._word_ngrams(get_tags(doc))
@@ -161,7 +164,16 @@ class RelatedWordVectorizer(TfidfVectorizer):
 
         preprocess = self.build_preprocessor()
         tokenize = self.build_tokenizer()
-
+        print "ngrams are "
+        print 
+        print 
+        print 
+        
+        #print self._word_ngrams(self.build_rel_word_string(
+        #    tokenize(preprocess("What is the currency of USA ?"))))
+        print 
+        print
+        
         return lambda doc: self._word_ngrams(self.build_rel_word_string(
             tokenize(preprocess(self.decode(doc)))))
 
