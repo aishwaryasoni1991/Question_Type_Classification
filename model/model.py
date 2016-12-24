@@ -42,8 +42,8 @@ class Classifier:
         """
         # Pipeline is used to chain multiple estimators into one. It stores a list of tuples of key value pairs
         # FeatureUnion takes a list of transformer object
-        print "in model now"
-        print feature_extractor.features.TagVectorizer()
+        #print "in model now"
+        #print feature_extractor.features.TagVectorizer()
         #print features.RelatedWordVectorizer()
         
         model = Pipeline([
@@ -83,7 +83,7 @@ class Classifier:
     def save_model(self,filename):
         if filename=="":
             log.ERROR("Empty file name")
-        print "in saving model " ,filename
+        #print "in saving model " ,filename
         log.debug("Saving model to file: " + filename)      
         joblib.dump(self.model,path.join(configuration.MODEL_DIR,filename))
         
@@ -117,9 +117,9 @@ class Classifier:
         self.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
         test_pred = []
         for a in X_test:
-            print "a is "
-            print
-            print a
+            #print "a is "
+            #print
+            #print a
             
             test_pred=test_pred.append(self.predict(a))
         result = self.model.score(test_pred, Y_test)
@@ -150,7 +150,7 @@ class Classifier:
         if leave_one_out:
             #print 'leave_one_out=True'
             cv = LeaveOneOut(len(y))
-            print "cv is true",cv
+            #print "cv is true",cv
             #print 'length of y is',len(y)
             #print 'cv.n is ',cv.n
         else:
@@ -163,15 +163,15 @@ class Classifier:
 
     # in every iteration, one label will be left out, starting from 0 location
         for train, test in cv:
-            print train, test
-            print 'x train ', X[train]
-            print 'y train is ', y[train]
+       
+            #print 'x train ', X[train]
+            #print 'y train is ', y[train]
           
             model = self.build_model().fit(X[train], y[train])
             avg_score += model.score(X[test], y[test])
-            print 
-            print 'x test and y test'
-            print X[test], y[test]
+            #print 
+            #print 'x test and y test'
+            #print X[test], y[test]
 
         if leave_one_out:
             avg_score /= len(y)
@@ -180,13 +180,13 @@ class Classifier:
 
         #print("Average score: {}".format(avg_score))
         scores = cross_val_score(model, X, y, cv=cv) # X=  all the questions, y is the target
-        print
+        #print
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
         return avg_score
 
     
 def classify_question_type(text):
-    print "in the classify question function"
+    #print "in the classify question function"
     clf = Classifier()
     clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
 
@@ -202,11 +202,11 @@ def load_data(filenames, coarse=False):
     data = [] # data stores the actual question
     target = [] # target stores the coarse labels like HUM or NUM etc
     fine_target = [] # fine_target stores the fine labels like manners,food etc
-    print "coarse is ",coarse
+    #print "coarse is ",coarse
     if coarse:
         data_re = re.compile(r'(\w+):(\w+) (.+)')
-        print 'line is '
-        print data_re
+        #print 'line is '
+        #print data_re
     else:
         # removes the labels and considers only question
         data_re = re.compile(r'(\w+:\w+) (.+)')
@@ -261,13 +261,10 @@ if __name__ == "__main__":
     #clf.save_model("trainCoarse.pkl")
     
     #clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
-    print
-    print
+    
     #clf.
     #clf=joblib.load(path.join(configuration.MODEL_DIR,"train.pkl"))
     #print clf
-    classify_question_type(": Why are you requiring all this coursework? I am an experienced software engineer and shouldn't have to take these academic prerequisites.") 
-    #clf.test_model(leave_one_out=True)
-    #clf.predict("How do the Nazis justify the killings of jews in the Holocaust?") 
-    print datetime.now().time()
+    classify_question_type("What are the application deadlines ?")
+   
          

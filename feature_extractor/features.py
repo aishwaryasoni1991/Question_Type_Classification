@@ -6,9 +6,9 @@ import numpy as np
 from nltk import pos_tag
 #from nltk.tag.stanford import NERTagger
 from nltk.tag import StanfordNERTagger
-from sklearn.base import BaseEstimator
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-import ner
+#from sklearn.base import BaseEstimator
+from sklearn.feature_extraction.text import TfidfVectorizer
+#import ner
 import sys
 import configuration as config
 #reload(sys)
@@ -33,7 +33,7 @@ def build_word_lists():
         f=open(path.join(a,wlf),'r')
         #with open(path.join(a,wlf),'r') as f:
         word_lists[wlf] = [word.strip().lower() for word in f.readlines()]
-    print word_lists
+    #print word_lists
     return word_lists
 
 class TagVectorizer(TfidfVectorizer):
@@ -98,7 +98,7 @@ class NERVectorizer(TfidfVectorizer):
         
         self.tags_only=tags_only
         self.tagger = StanfordNERTagger(config.NER_MODEL_PATH, config.NER_JAR, encoding=self.encoding)
-        print "in NER ",self.tags_only
+        #print "in NER ",self.tags_only
         #self.tagger = ner.SocketNER(host='localhost', port='9191', output_format='slashTags')
        
     def build_analyzer(self):
@@ -108,7 +108,7 @@ class NERVectorizer(TfidfVectorizer):
        
         tokenize = lambda doc: tokenizer(preprocess(self.decode(doc)))
         
-        print "in build analyzer of NER "
+        #print "in build analyzer of NER "
 
         # get_tags = lambda doc: [tag for tag in self.tagger.get_entities(doc).iterkeys()]
 
@@ -152,40 +152,39 @@ class RelatedWordVectorizer(TfidfVectorizer):
             dtype=dtype, norm=norm, use_idf=use_idf, smooth_idf=smooth_idf,
             sublinear_tf=sublinear_tf)
 
-        print "in wordvect"
-        print
-        print self.preprocessor
+        #print "in wordvect"
+        #print
+        #print self.preprocessor
         self.word_lists = build_word_lists()  #control goes to build_word_lists()
 
     
     def build_analyzer(self):
         """Return a callable that handles preprocessing and tokenization"""
-        print 'in rel build analyizer'
+        #print 'in rel build analyizer'
 
         preprocess = self.build_preprocessor()
         tokenize = self.build_tokenizer()
-        print "ngrams are "
-        print 
-        print 
-        print 
-        
+        #print "ngrams are "
+        #print 
+        #print 
+        #print 
+        #
         #print self._word_ngrams(self.build_rel_word_string(
         #    tokenize(preprocess("What is the currency of USA ?"))))
-        print 
-        print
+        #print 
+        #print
         
         return lambda doc: self._word_ngrams(self.build_rel_word_string(
             tokenize(preprocess(self.decode(doc)))))
 
     def get_rel_word(self, word):
-        print "word in get rel is ", word
         for rel, words in self.word_lists.iteritems():
             if word in words:
                 return rel
         return ""
 
     def build_rel_word_string(self, doc):
-        print "in build_rel word doc is ",doc
+        #print "in build_rel word doc is ",doc
         related_words = ""
         for word in doc:
             rel_word = self.get_rel_word(word)
