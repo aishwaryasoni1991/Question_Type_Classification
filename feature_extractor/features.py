@@ -6,8 +6,8 @@ import numpy as np
 from nltk import pos_tag
 #from nltk.tag.stanford import NERTagger
 from nltk.tag import StanfordNERTagger
-#from sklearn.base import BaseEstimator
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.base import BaseEstimator
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 #import ner
 import sys
 import configuration as config
@@ -168,7 +168,7 @@ class RelatedWordVectorizer(TfidfVectorizer):
         #print 
         #print 
         #print 
-        #
+        
         #print self._word_ngrams(self.build_rel_word_string(
         #    tokenize(preprocess("What is the currency of USA ?"))))
         #print 
@@ -178,6 +178,7 @@ class RelatedWordVectorizer(TfidfVectorizer):
             tokenize(preprocess(self.decode(doc)))))
 
     def get_rel_word(self, word):
+        #print "word in get rel is ", word
         for rel, words in self.word_lists.iteritems():
             if word in words:
                 return rel
@@ -191,7 +192,3 @@ class RelatedWordVectorizer(TfidfVectorizer):
             if rel_word:
                 related_words += rel_word + " "
         return related_words.strip()
-   
-
-   
-

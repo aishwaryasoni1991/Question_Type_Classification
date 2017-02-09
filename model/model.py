@@ -125,9 +125,7 @@ class Classifier:
         result = self.model.score(test_pred, Y_test)
         b= accuracy_score(Y_test,test_pred)
         
-        print("Accuracy: %.3f%%") % (result*100.0)
-        print "b is ", b
-            
+        print("Accuracy: %.3f%%") % (result*100.0)         
         
         return 0
     
@@ -182,13 +180,15 @@ class Classifier:
         scores = cross_val_score(model, X, y, cv=cv) # X=  all the questions, y is the target
         #print
         print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+        print 
+        print "avg score is ",avg_score
         return avg_score
 
     
 def classify_question_type(text):
     #print "in the classify question function"
     clf = Classifier()
-    clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
+    clf.load_model(path.join(configuration.MODEL_DIR,"TrainCoarseFalse.pkl"))
 
     #print
     qtype = clf.predict(text) 
@@ -244,7 +244,7 @@ def load_data(filenames, coarse=False):
     
 if __name__ == "__main__":
    
-    #data = load_data("./data/train.txt",coarse=False)
+    #data = load_data("./data/train_5500.txt",coarse=False)
    
     #test_data=load_data("./data/faq.txt")
     #print data # prints the Bunch() output
@@ -252,19 +252,16 @@ if __name__ == "__main__":
     #clf.search_estimator_params()
     #        # clf.test_model(n_folds=10)
     
-    
     #clf.train_model()
     #clf.test_faq()
     #clf.test_model(n_folds=2) #change value to 2
     # Plot Precision-Recall curve
     
-    #clf.save_model("trainCoarse.pkl")
+    #clf.save_model("TrainCoarseFalse.pkl")
     
     #clf.load_model(path.join(configuration.MODEL_DIR,"train.pkl"))
     
     #clf.
     #clf=joblib.load(path.join(configuration.MODEL_DIR,"train.pkl"))
     #print clf
-    classify_question_type("What are the application deadlines ?")
-   
-         
+    classify_question_type("Which is the best place to live in Paris?")
